@@ -15,6 +15,7 @@ services:
   api_newman:
     build:
       dockerfile: Dockerfile
+      context: ./
     container_name: api_newman
     ports:
       - 9000:9000
