@@ -18,7 +18,7 @@ services:
       context: ./
     container_name: api_newman
     ports:
-      - 9000:9000
+      - 9900:9900
     restart: always
     depends_on:
       - psql_newman
