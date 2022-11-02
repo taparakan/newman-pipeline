@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  psql_newman:
+    image: postgres
+    container_name: psql_newman
+    environment:
+      POSTGRES_USER: izydor
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: bm_dev_auth
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data_newman:/var/lib/postgresql/data/
+  api_newman:
+    build:
+      dockerfile: Dockerfile
+    container_name: api_newman
+    ports:
+      - 9000:9000
+    restart: always
+    depends_on:
+      - psql_newman
+
+volumes:
+  postgres_data_newman:
